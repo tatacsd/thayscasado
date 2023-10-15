@@ -76,7 +76,7 @@ export function App() {
 
       {/*HOME*/}
       <section className="flex flex-col justify-center items-center h-screen w-full bg-[#1E2227]">
-        <div className="lg:hidden flex flex-row justify-between  text-white items-center bg-[#111418] px-4">
+        <div className="lg:hidden flex flex-row justify-between  text-white items-center bg-[#111418] px-4 w-full gap-4">
           <p className="text-lg font-bold text-center inline-block">
             Thays Casado
           </p>
