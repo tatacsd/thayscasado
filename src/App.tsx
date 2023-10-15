@@ -82,7 +82,7 @@ export function App() {
           </p>
 
           <div className="inline-block">
-            <ul className=" flex">
+            <ul className=" flex gap-4">
               <li>
                 <a href="https://github.com/tatacsd" target="_blank">
                   <GithubLogo size={24} />
