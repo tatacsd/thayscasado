@@ -7,6 +7,8 @@ import {
 import imageURL from "./assets/profile.png";
 import { TypedAnimation } from "./components/TypedAnimation";
 import { Button } from "./components/ui/button";
+import { trackButtonClick } from './utils/ga4Utils';
+
 
 export function App() {
   const textArray = ["Developer.", "Freelancer.", "Designer.", "Photographer."];
@@ -14,6 +16,7 @@ export function App() {
     "https://drive.google.com/file/d/1b1XGWlwcwAF5EIYttntD4vEIpRx2QvbB/view?usp=drive_link";
 
   const handleButtonDownload = () => {
+    trackButtonClick("resumeButton", 1);
     window.open(pdfUrl, "_blank");
   };
 
