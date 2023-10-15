@@ -10,10 +10,11 @@ import { Button } from "./components/ui/button";
 
 export function App() {
   const textArray = ["Developer.", "Freelancer.", "Designer.", "Photographer."];
-  const pdfUrl = 'https://drive.google.com/file/d/1b1XGWlwcwAF5EIYttntD4vEIpRx2QvbB/view?usp=drive_link'; 
+  const pdfUrl =
+    "https://drive.google.com/file/d/1b1XGWlwcwAF5EIYttntD4vEIpRx2QvbB/view?usp=drive_link";
 
   const handleButtonDownload = () => {
-    window.open(pdfUrl, '_blank');
+    window.open(pdfUrl, "_blank");
   };
 
   return (
@@ -66,15 +67,59 @@ export function App() {
             </li>
             <li>
               <a href="https://twitter.com/CasadoThays" target="_blank">
-              <TwitterLogo size={24} />
+                <TwitterLogo size={24} />
               </a>
             </li>
           </ul>
         </div>
       </aside>
+
       {/*HOME*/}
       <section className="flex flex-col justify-center items-center h-screen w-full bg-[#1E2227]">
+        <div className="lg:hidden flex flex-row justify-between  text-white items-center bg-[#111418] px-4">
+          <p className="text-lg font-bold text-center inline-block">
+            Thays Casado
+          </p>
+
+          <div className="inline-block">
+            <ul className=" flex">
+              <li>
+                <a href="https://github.com/tatacsd" target="_blank">
+                  <GithubLogo size={24} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/thayscasado"
+                  target="_blank"
+                >
+                  <LinkedinLogo size={24} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/thayscasado/"
+                  target="_blank"
+                >
+                  <InstagramLogo size={24} />
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/CasadoThays" target="_blank">
+                  <TwitterLogo size={24} />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div className="flex flex-col justify-center items-center h-screen w-full bg-[#1E2227]">
+        <div className="lg:hidden flex justify-center items-center pb-2">
+            <img
+              className="rounded-full w-40 h-40 border-spacing-10 border-8 border-[#343A40]"
+              src={imageURL}
+              alt=""
+            />
+          </div>
           <h1 className="text-white text-center lg:text-6xl font-bold mb-6 text-lg">
             Hi, I'm Thays Casado
           </h1>
