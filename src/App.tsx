@@ -73,9 +73,9 @@ export function App() {
         </div>
       </aside>
       {/*HOME*/}
-      <section className="flex flex-col justify-center items-center h-screen w-10/12 bg-[#1E2227]">
-        <div className="flex flex-col justify-center items-center h-screen w-12/12 bg-[#1E2227]">
-          <h1 className="text-white text-center text-6xl font-bold mb-6">
+      <section className="flex flex-col justify-center items-center h-screen w-full bg-[#1E2227]">
+        <div className="flex flex-col justify-center items-center h-screen w-full bg-[#1E2227]">
+          <h1 className="text-white text-center lg:text-6xl font-bold mb-6 text-lg">
             Hi, I'm Thays Casado
           </h1>
           <div className="text-white text-center text-4xl">

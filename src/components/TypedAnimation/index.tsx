@@ -67,14 +67,14 @@ export const TypedAnimation = ({
   // Return the JSX for rendering the component.
   return (
     <div className="flex flex-row justify-center items-center align-middle min-w-full">
-  <span className="text-white text-6xl font-bold mr-5" >
+  <span className="text-white lg:text-6xl font-bold mr-5 text-lg" >
     I'm a
   </span>
-  <span className="text-6xl font-bold text-purple-500">
+  <span className="lg:text-6xl font-bold text-purple-500 text-lg">
     {currentText}
   </span>
   {/* Show the current text */}
-  {showCursor && <span className="text-white text-8xl font-bold ml-5">|</span>}
+  {showCursor && <span className="text-white lg:text-8xl text-lg font-bold ml-5">|</span>}
   {/* Show the cursor when `showCursor` is true */}
 </div>
 
