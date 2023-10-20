@@ -5,19 +5,24 @@ import {
   TwitterLogo,
 } from "@phosphor-icons/react";
 import imageURL from "./assets/profile.png";
-import { TypedAnimation } from "./components/TypedAnimation";
-import { Button } from "./components/ui/button";
-import { trackButtonClick } from './utils/ga4Utils';
-
+import { trackButtonClick } from "./utils/ga4Utils";
+import { HomeSection } from "./components/HomeSection";
+import { SECTIONS } from "../src/utils/constants";
+import { useState } from "react";
+import { ContactSection } from "./components/ContactSection";
+import { textArray } from "./utils/constants";
+import { pdfUrl } from "./utils/constants";
 
 export function App() {
-  const textArray = ["Developer.", "Freelancer.", "Designer.", "Photographer."];
-  const pdfUrl =
-    "https://drive.google.com/file/d/1b1XGWlwcwAF5EIYttntD4vEIpRx2QvbB/view?usp=drive_link";
+  const [currentSection, setCurrentSection] = useState(SECTIONS.HOME);
 
   const handleButtonDownload = () => {
     trackButtonClick("resumeButton", 1);
     window.open(pdfUrl, "_blank");
+  };
+
+  const handleSectionChange = (section: string) => {
+    setCurrentSection(section);
   };
 
   return (
@@ -43,11 +48,30 @@ export function App() {
         <div className="w-full p-5">
           <nav className="text-white w-full">
             <ul className="text-center w-full flex flex-col gap-6">
-              <li>Home</li>
+              <li
+                onClick={() => handleSectionChange(SECTIONS.HOME)}
+                className={
+                  currentSection === SECTIONS.HOME
+                    ? "text-[#A855F7] font-bold"
+                    : ""
+                }
+              >
+                Home
+              </li>
               {/* <li>About</li>
               <li>Skills</li>
               <li>Projects</li>
-              <li>Contact</li> */}
+              */}
+              <li
+                onClick={() => handleSectionChange(SECTIONS.CONTACT)}
+                className={
+                  currentSection === SECTIONS.CONTACT
+                    ? "text-[#A855F7] font-bold"
+                    : ""
+                }
+              >
+                Contact
+              </li>
             </ul>
           </nav>
         </div>
@@ -77,76 +101,19 @@ export function App() {
         </div>
       </aside>
 
-      {/*HOME*/}
-      <section className="flex flex-col justify-center items-center h-screen w-full bg-[#1E2227]">
-        <div className="lg:hidden flex flex-row justify-between  text-white items-center bg-[#111418] px-4 w-full gap-4">
-          <p className="text-lg font-bold text-center inline-block">
-            Thays Casado
-          </p>
-
-          <div className="inline-block">
-            <ul className=" flex gap-4">
-              <li>
-                <a href="https://github.com/tatacsd" target="_blank">
-                  <GithubLogo size={24} />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/thayscasado"
-                  target="_blank"
-                >
-                  <LinkedinLogo size={24} />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/thayscasado/"
-                  target="_blank"
-                >
-                  <InstagramLogo size={24} />
-                </a>
-              </li>
-              <li>
-                <a href="https://twitter.com/CasadoThays" target="_blank">
-                  <TwitterLogo size={24} />
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="flex flex-col justify-center items-center h-screen w-full bg-[#1E2227]">
-        <div className="lg:hidden flex justify-center items-center pb-2">
-            <img
-              className="rounded-full w-40 h-40 border-spacing-10 border-8 border-[#343A40]"
-              src={imageURL}
-              alt=""
-            />
-          </div>
-          <h1 className="text-white text-center lg:text-6xl font-bold mb-6 text-lg">
-            Hi, I'm Thays Casado
-          </h1>
-          <div className="text-white text-center text-4xl">
-            <TypedAnimation
-              strings={textArray}
-              typeSpeed={100}
-              backSpeed={50}
-              backDelay={700}
-            />
-          </div>
-          <p className="text-white text-center text-lg mt-6">
-            base in Vancouver, British Columbia
-          </p>
-
-          <Button
-            variant={"outline"}
-            className="mt-6 shadow-lg hover:bg-[#343A40] hover:text-white"
-            onClick={handleButtonDownload}
-          >
-            Download CV
-          </Button>
-        </div>
-      </section>
+      {currentSection === SECTIONS.HOME && (
+        <HomeSection
+          handleButtonDownload={handleButtonDownload}
+          textArray={textArray}
+          imageURL={imageURL}
+          nextSection={() => handleSectionChange(SECTIONS.CONTACT)}
+        />
+      )}
+      {currentSection === SECTIONS.CONTACT && (
+        <ContactSection
+          previousSection={() => handleSectionChange(SECTIONS.HOME)}
+        />
+      )}
     </div>
   );
 }
